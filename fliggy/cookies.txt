@@ -1,0 +1,15 @@
+Cookie:
+cna=mVxcFByR40ACAbaLQ7n8xfvD; 
+sca=04cec909;
+atpsida=ed91f6c28f17388163f0c3a6_1543080695_33; 
+cad=EPVs/DN+IRFnpqeRm+TTTxl+Gqma60DG+tIAyamxEGM=0001; 
+cap=2285; 
+tbsa=58060495637451d9758a61ba_1543080577_3; 
+cnaui=2815955626; 
+aui=2815955626
+
+Host:gm.mmstat.com
+
+Referer:https://sijipiao.fliggy.com/ie/flight_search_result.htm?searchBy=1281&b2g=0
+
+

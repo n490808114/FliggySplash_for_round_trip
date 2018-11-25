@@ -1,0 +1,2 @@
+https://sijipiao.fliggy.com/ie/flight_search_result.htm?searchBy=1281&b2g=0&formNo=-1&agentId=-1&needMemberPrice=true&searchJourney=[{'depCityCode':'CGO','arrCityCode':'MEL','depDate':'2018-12-01'}]
+&childPassengerNum=0&infantPassengerNum=0&tripType=0&cardId=
