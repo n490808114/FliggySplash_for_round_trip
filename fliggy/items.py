@@ -11,7 +11,11 @@ import scrapy
 class FliggyItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    info = scrapy.Field()
+    triptype = scrapy.Field()
+    dep_city = scrapy.Field()
+    arr_city = scrapy.Field()
+    first_dep_date = scrapy.Field()
+    second_dep_date = scrapy.Field()
     lowest_price = scrapy.Field()
 
 

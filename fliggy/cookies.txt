@@ -12,4 +12,26 @@ Host:gm.mmstat.com
 
 Referer:https://sijipiao.fliggy.com/ie/flight_search_result.htm?searchBy=1281&b2g=0
 
-
+enc=sOVscSZ6cTGBauwU%2Bg3V5DdGuwiEr8ePoQLv2Wat5MJ9rhr5Cezn976IJnEyKs30qwugz9GEF%2BxqYy%2FU6t8qww%3D%3D; 
+cna=NHPUExvnDkACAavd8fAcPWmV; 
+dnk=%5Cu56DB%5Cu5DDD%5Cu94C1%5Cu822A%5Cu5546%5Cu65C5; 
+sk=sai=UUjZelvO6U7stsCVwbFftg%3D%3D&n=qGxD%2FJkjMY5nzndI&sae=UUtO%2FV%2BJNKq8f6vDFdxC3h4%3D&agf=V3iZctxTnyQJlDXtPhkYoEJaTB%2BhN7kfpgxnCaK66Xc%3D&ss=Tmc%3D&fg=Vvj6Fvb8IA%3D%3D&agt=Ug%3D%3D&i=Vv7BmA%3D%3D&fn=qGxD%2FJkjMY4XrIJyKN%2BC20ZS6lobLAigB2M%3D&ln=qGxD%2FJkjMY5nzndI; 
+tal=Vw%3D%3D; 
+l=aB8lElnGHIFLOFoXkManmSp2yOqxjgfLPpJW1MwP-Tx40AIhDYjkcdrbR_zINlIeSqOyu02V505j0; 
+__guid=66414014.4475733110818210000.1540536894689.8647; 
+sg=%E6%97%858a; _nk_=%5Cu56DB%5Cu5DDD%5Cu94C1%5Cu822A%5Cu5546%5Cu65C5; 
+uc1=cookie16=UtASsssmPlP%2Ff1IHDsDaPRu%2BPw%3D%3D&tmb=1&cookie21=W5iHLLyFfoWm&cookie15=V32FPkk%2Fw0dUvg%3D%3D&existShop=true&pas=0&cookie14=UoTYNcpkEJpatw%3D%3D&tag=8&lng=zh_CN; 
+_l_g_=Ug%3D%3D; 
+cookie2=11abb4b7dcb961347119d20b2f997d50; 
+lid=%E5%9B%9B%E5%B7%9D%E9%93%81%E8%88%AA%E5%95%86%E6%97%85; 
+csg=11f3f23c; 
+cookie1=AQGq2PB8ic%2FwnzXT6Eo4wxZvkgsM%2BUL%2BgMIehzviOHg%3D; 
+unb=3286044998; hng=CN%7Czh-CN%7CCNY%7C156; 
+t=2a22edebcf647cd89d97eac8d717026b; 
+cookie17=UNJZJXuidSDLjQ%3D%3D; 
+ck=uid=UNJZJXuidSDLjQ%3D%3D; 
+tracknick=%5Cu56DB%5Cu5DDD%5Cu94C1%5Cu822A%5Cu5546%5Cu65C5; 
+login=true; 
+_tb_token_=XR1zcBqV7PntpdGn7Dis; 
+sty=2; 
+isg=BBgYumLX9wDcZNsyh852-lBU6UYGEWmIccruDFIJhNMG7bzX-hINGvmLIWX4fTRj

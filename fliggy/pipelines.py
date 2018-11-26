@@ -19,5 +19,5 @@ class JsonPipeline(object):
         line = json.dumps(dict(item),ensure_ascii=False)+'\n'
         self.file.write(line)
         return item
-#    def spider_closed(self,spider):
-#        self.file.close()
+    def spider_closed(self,spider):
+        self.file.close()
