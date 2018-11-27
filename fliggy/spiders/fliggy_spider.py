@@ -3,19 +3,21 @@ import datetime
 import re
 from ..items import FliggyItem
 from scrapy_splash import SplashRequest
+from scrapy_splash import SplashMiddleware
+from scrapy import Selector
 
 
 # splash lua script
-#script = """
-#         function main(splash, args)
-#             assert(splash:go(args.url))
-#             assert(splash:wait(args.wait))
-#             js = string.format("document.querySelector('#kw').value=%s;document.querySelector('#su').click()", args.phone)
-#             splash:evaljs(js)
-#             assert(splash:wait(args.wait))
-#             return splash:html()
-#         end
-#         """
+script ="""
+        function main(splash, args)
+            assert(splash:go(args.url))
+            assert(splash:wait(args.wait))
+            js = "document.getElementsByClassName('search-btn').submit;"
+            splash:evaljs(js)
+            assert(splash:wait(args.wait))
+            return splash:html()
+        end
+        """
 
 class FliggySpider(scrapy.Spider):
     name = 'fliggy'
@@ -43,7 +45,10 @@ class FliggySpider(scrapy.Spider):
             yield SplashRequest(
                 url,
                 callback=self.parse,
-                args={ 'wait': 0.5, }
+                args={ 
+                    'lua_source': script,
+                    'wait': 0.5, 
+                    }
                 )
             
     def parse(self,response):
@@ -51,33 +56,39 @@ class FliggySpider(scrapy.Spider):
         items = []
         #调用爬虫的类，将爬到的内容存在字典中
         item = FliggyItem()
-        
+        site = Selector(response)
         print(response.url)
         
-        item['triptype'] = response.xpath('//*[@id="J_IeSearch"]/div[1]/p/text()').extract()
-        item['dep_city'] = response.xpath('//*[@id="J_IeSearch"]/div[1]/div[2]/label[1]/input[1]/@value').extract()
-        item['arr_city'] = response.xpath('//*[@id="J_IeSearch"]/div[1]/div[2]/label[2]/input[1]/@value').extract()
+        item['triptype'] = site.xpath('//*[@id="J_IeSearch"]/div[1]/p/text()').extract()
+        item['dep_city'] = site.xpath('//*[@id="J_IeSearch"]/div[1]/div[2]/label[1]/input[1]/@value').extract()
+        item['arr_city'] = site.xpath('//*[@id="J_IeSearch"]/div[1]/div[2]/label[2]/input[1]/@value').extract()
         #item['first_dep_date'] = response.xpath('//*[@id="J_IeSearch"]/div[1]/div[3]/label[1]/div/input/@value').extract()
         dep_date = re.findall(r'depDate.*?([0-9]{4}-[0-9]{2}-[0-9]{2})',response.url)
-        print(dep_date)
+        #print(dep_date)
         if len(dep_date) == 1:
             dep_date.append('无')
         item['first_dep_date'],item['second_dep_date']=dep_date
-        #item['second_dep_date'] =response.xpath('//*[@id="J_IeSearch"]/div[1]/div[3]/label[2]/div/input/@value').extract()
+        # item['second_dep_date'] =response.xpath('//*[@id="J_IeSearch"]/div[1]/div[3]/label[2]/div/input/@value').extract()
         
-        print(response.xpath('//*[@id="J_Flights"]/div[2]/div//text()').extract())
-        print(str(response.xpath('//*[@id="J_Flights"]/div[2]/div/text()').extract()))
-        print(re.findall('\u6377\u661f',str(response.xpath('//*[@id="J_Flights"]/div[2]/div/text()').extract())))
+        # print(response.xpath('//*[@id="J_Flights"]/div[2]/div//text()'))
+        # print(str(response.xpath('//*[@id="J_Flights"]/div[2]/div/text()')))
+        # print(re.findall('\u6377\u661f',str(response.xpath('//*[@id="J_Flights"]/div[2]/div/text()'))))
+        mess = site.xpath('//*[@id="J_DepResultContainer"]/div')
+        print(mess)
+        for mes in mess:
+            me = mes.xpath("div/div/table/tr/td")
+            print(me)
+            m = me.xpath("div/div/p/span/text()")
+            print(m)
         
-        #'\u6377\u661f'是‘捷星’的unicode编码
-        #if re.findall('\u6377\u661f',str(response.xpath('//*[@id="J_Flights"]/div[2]/div/text()').extract())):
-        #如果爬取结果中有捷星的话，继续找捷星的价格，如果没有的话设价格为空
+        
+        # '\u6377\u661f'是‘捷星’的unicode编码
+        # 如果爬取结果中有捷星的话，继续找捷星的价格，如果没有的话设价格为空
         for i in range(1,10):
-            print(f'//*[@id="J_DepResultContainer"]/div[{i}]//table/tbody/tr/td[1]/div/div/p[1]/span')
-            print(response.xpath(fr'//*[@id="J_DepResultContainer"]/div[{i}]//table/tbody/tr/td[1]/div/div/p[1]/span/text()').extract())
+
             #搜索前十个结果，捷星在第几项结果中就抓取这一项的价格
-            if '\u6377\u661f' in response.xpath(f'//*[@id="J_DepResultContainer"]/div[{i}]//table/tbody/tr/td[1]/div/div/p[1]/span/text()').extract():
-                item['lowest_price'] =response.xpath(f'//*[@id="J_DepResultContainer"]/div[{i}]//table/tbody/tr/td[1]/div/div/p[1]/span/text()').extract()
+            if '\u6377\u661f' in site.xpath(f'//*[@id="J_DepResultContainer"]/div[{i}]//table//tr/td[1]/div/div/p[1]/span/text()').extract():
+                item['lowest_price'] =site.xpath(f'//*[@id="J_DepResultContainer"]/div[{i}]//table//tr/td[7]/div/div[1]/span/text()').extract()
                 break
             else:
                 item['lowest_price'] = []
