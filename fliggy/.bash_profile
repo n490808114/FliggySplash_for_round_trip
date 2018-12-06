@@ -1,0 +1,1 @@
+DOCKER_CERT_PATH=c:\users\myusername.docker\machine\certs
